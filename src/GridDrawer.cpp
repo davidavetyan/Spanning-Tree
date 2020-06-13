@@ -2,11 +2,6 @@
 
 void CGridDrawer::Draw(QPainter* pPainter, QSize szWidget)
 {
-	Draw(pPainter, szWidget, false);
-}
-
-void CGridDrawer::Draw(QPainter* pPainter, QSize szWidget, bool bDrawTree)
-{
 	if (!m_pGraph || m_pGraph->isEmpty())
 		return;
 
@@ -40,7 +35,7 @@ void CGridDrawer::Draw(QPainter* pPainter, QSize szWidget, bool bDrawTree)
 		for (int j = 0; j <= nColumnCount; ++j)
 			pPainter->drawPoint(QPoint(ixOffset + j * ixSpacing, iyOffset + i * iySpacing));
 
-	if (bDrawTree)
+	if (m_bDrawST)
 	{
 		pPainter->setPen(QPen(Qt::red, 3, Qt::SolidLine, Qt::RoundCap));
 
@@ -65,7 +60,7 @@ void CGridDrawer::ResetGraphDimensions(int nRow, int nCol, bool bPopulate)
 	ResetSTCache();
 }
 
-void CGridDrawer::DrawEdges(QPainter* pPainter, SharedPtr<const CGridGraph> pGraph, QSize szOffset, QSize szSpacing)
+void CGridDrawer::DrawEdges(QPainter* pPainter, SharedPtr<const CGridGraph> pGraph, QSize szOffset, QSize szSpacing) const
 {
 	if (!pGraph || pGraph->isEmpty())
 		return;
@@ -114,11 +109,22 @@ void CGridDrawer::DrawEdges(QPainter* pPainter, SharedPtr<const CGridGraph> pGra
 
 void CGridDrawer::CreateSTCache()
 {
-	m_pSTCache = std::make_shared<CGridGraph>();
-	m_pGraph->GetSpanTree(*m_pSTCache);
+	if (m_pGraph == nullptr)
+		return;
+
+	if (m_pSTCache == nullptr)
+		m_pSTCache = std::make_shared<CGridGraph>();
+	CSTGenerator* pGenerator = CSTGenerator::GetInstance();
+	if (pGenerator != nullptr)
+		pGenerator->GetSpanTree(*m_pGraph, *m_pSTCache);
 }
 
 void CGridDrawer::ResetSTCache()
 {
 	m_pSTCache.reset();
+}
+
+void CGridDrawer::SetDrawST(bool bDrawST)
+{
+	m_bDrawST = bDrawST;
 }

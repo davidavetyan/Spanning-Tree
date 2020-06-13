@@ -8,9 +8,10 @@
 
 // Qt includes
 #include <QPainter>
-#include <utility>
 
-class CDrawer
+#include "STGenerator.h"
+
+class CDrawer : public QObject
 {
 public:
 	inline	CDrawer();
@@ -28,15 +29,20 @@ inline CDrawer::CDrawer() :
 	
 }
 
-
+////////////////////////////////////////////////////////////////////
+//
+// CGridDrawer
+//
 class CGridDrawer : public CDrawer
 {
+	Q_OBJECT
+
 	template<class T>
 	using SharedPtr = std::shared_ptr<T>;
 
 public:
 	CGridDrawer() = default;
-	virtual ~CGridDrawer() = default;
+	virtual ~CGridDrawer();
 	CGridDrawer(CGridDrawer const&) = default;
 	CGridDrawer& operator=(CGridDrawer const&) = default;
 	
@@ -45,28 +51,39 @@ public:
 	inline	CGridDrawer&	operator=(CGridDrawer&& oDrawer) noexcept;
 
 public:
-	void			ResetGraphDimensions(int nRow, int nCol, bool bPopulate = false);
-	virtual void	Draw(QPainter* pPainter, QSize szWidget) override;
-	virtual void	Draw(QPainter* pPainter, QSize szWidget, bool bDrawTree);
+	void	Draw(QPainter* pPainter, QSize szWidget) override;
+	void	SetDrawST(bool bDrawST);
+	void	ResetGraphDimensions(int nRow, int nCol, bool bPopulate = false);
+	void	ResetSTCache();
 
 private:
-	void			DrawEdges(QPainter* pPainter, SharedPtr<const CGridGraph> pGraph, QSize szOffset, QSize szSpacing);
-	void			CreateSTCache();
-	void			ResetSTCache();
+	void	DrawEdges(QPainter* pPainter, SharedPtr<const CGridGraph> pGraph, QSize szOffset, QSize szSpacing) const;
+	void	CreateSTCache();
 
 private:
 	SharedPtr<CGridGraph>	m_pGraph; //! Pointer to the CGridGraph object that should be drawn
 	SharedPtr<CGridGraph>	m_pSTCache; //! Cache for the spanning tree object
+	bool					m_bDrawST; //! Shows whether the spanning tree should be drawn
 };
+////////////////////////////////////////////////////////////////////
 
-inline CGridDrawer::CGridDrawer(SharedPtr<CGridGraph> pGraph) 
-	: m_pGraph(std::move(pGraph))
+////////////////////////////////////////////////////////////////////
+
+inline CGridDrawer::~CGridDrawer()
+{
+	CSTGenerator* pGenerator = CSTGenerator::GetInstance();
+	if (pGenerator != nullptr)
+		pGenerator->ReleaseInstance();
+}
+
+inline CGridDrawer::CGridDrawer(SharedPtr<CGridGraph> pGraph)
+	: m_pGraph(std::move(pGraph)), m_bDrawST(false)
 {
 
 }
 
 inline CGridDrawer::CGridDrawer(CGridDrawer&& oDrawer) noexcept
-	: m_pGraph(std::move(oDrawer.m_pGraph))
+	: m_pGraph(std::move(oDrawer.m_pGraph)), m_bDrawST(false)
 {
 	oDrawer.m_pGraph.reset();
 
@@ -80,6 +97,7 @@ inline CGridDrawer& CGridDrawer::operator=(CGridDrawer&& oDrawer) noexcept
 
 	m_pGraph = oDrawer.m_pGraph;
 	m_pSTCache = oDrawer.m_pSTCache;
+	m_bDrawST = oDrawer.m_bDrawST;
 	m_szOffset = oDrawer.m_szOffset;
 	
 	oDrawer.m_pGraph.reset();
@@ -88,4 +106,5 @@ inline CGridDrawer& CGridDrawer::operator=(CGridDrawer&& oDrawer) noexcept
 	return *this;
 }
 
+////////////////////////////////////////////////////////////////////
 #endif

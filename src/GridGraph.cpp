@@ -1,14 +1,6 @@
 #include "GridGraph.h"
 
-// STL includes
-#include <random>
-
-#include "Matrix.h"
-
-std::random_device rand_device;
-std::mt19937 mt_19937(rand_device());
-
-void CGridGraph::Reset(t_index nRow, t_index nCol)
+void CGridGraph::Reset(size_t nRow, size_t nCol)
 {
 	m_nRowCount = nRow;
 	m_nColCount = nCol;
@@ -66,86 +58,6 @@ void CGridGraph::PopulateFull()
 	}
 }
 
-void CGridGraph::GetSpanTree(CGridGraph& oSpanTree) const
-{
-	if (isEmpty())
-		return;
-
-	oSpanTree.Reset(m_nRowCount, m_nColCount);
-
-	CMatrix<ENodeState> mxVisited(m_nRowCount + 1, m_nColCount + 1);
-	for (int i = 0; i < m_nRowCount + 1; ++i)
-	{
-		for (int j = 0; j < m_nColCount + 1; ++j)
-		{
-			mxVisited(i, j) = ENodeState::eUnvisited;
-		}
-	}
-
-	std::uniform_int_distribution<int> uniform_row_dist(0, m_nRowCount);
-	std::uniform_int_distribution<int> uniform_col_dist(0, m_nColCount);
-	std::uniform_int_distribution<int> uniform_pair_dist(0, 1);
-
-
-	QVector<QPoint> stVertices;
-	stVertices << QPoint(uniform_row_dist(mt_19937) % (m_nRowCount + 1), uniform_col_dist(mt_19937) % (m_nColCount + 1));
-
-	int bFront = 0;
-
-	while (!stVertices.empty())
-	{
-		bFront = uniform_pair_dist(mt_19937);
-
-		QPoint pntNode;
-		if (bFront)
-		{
-			pntNode = stVertices.front();
-			stVertices.pop_front();
-		}
-		else
-		{
-			pntNode = stVertices.back();
-			stVertices.pop_back();
-		}
-
-		const int x = pntNode.x();
-		const int y = pntNode.y();
-
-		if (mxVisited(x, y) != ENodeState::eProcessed)
-		{
-			mxVisited(x, y) = ENodeState::eProcessed;
-
-			if (y - 1 >= 0 && ENodeState::eUnvisited == mxVisited(x, y - 1))
-			{
-				oSpanTree.AddEdge(x, y, EEdgeType::eLeft);
-				stVertices << QPoint{ x, y - 1 };
-				mxVisited(x, y - 1) = ENodeState::eVisited;
-			}
-
-			if (y + 1 <= m_nColCount && ENodeState::eUnvisited == mxVisited(x, y + 1))
-			{
-				oSpanTree.AddEdge(x, y, EEdgeType::eRight);
-				stVertices << QPoint{ x, y + 1 };
-				mxVisited(x, y + 1) = ENodeState::eVisited;
-			}
-
-			if (x - 1 >= 0 && ENodeState::eUnvisited == mxVisited(x - 1, y))
-			{
-				oSpanTree.AddEdge(x, y, EEdgeType::eTop);
-				stVertices << QPoint{ x - 1, y };
-				mxVisited(x - 1, y) = ENodeState::eVisited;
-			}
-
-			if (x + 1 <= m_nRowCount && ENodeState::eUnvisited == mxVisited(x + 1, y))
-			{
-				oSpanTree.AddEdge(x, y, EEdgeType::eBottom);
-				stVertices << QPoint{ x + 1, y };
-				mxVisited(x + 1, y) = ENodeState::eVisited;
-			}
-		}
-	}
-}
-
 void CGridGraph::AddEdge(int x, int y, EEdgeType eType)
 {
 	if (0 <= x && m_nRowCount >= x && 0 <= y && m_nColCount >= y)
@@ -161,4 +73,3 @@ bool CGridGraph::isEmpty() const
 {
 	return 0 == m_nRowCount || 0 == m_nColCount;
 }
-

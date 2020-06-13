@@ -8,8 +8,9 @@
 #include "GridDrawer.h"
 
 ////////////////////////////////////////////////////////////////////
-// class CCanvasWidget
-
+//
+// CCanvasWidget
+//
 class CCanvasWidget : public QWidget
 {
 	Q_OBJECT
@@ -18,12 +19,6 @@ class CCanvasWidget : public QWidget
 	template<class T>
 	using SharedPtr = std::shared_ptr<T>;
 
-	template<class T>
-	using UniquePtr = std::unique_ptr<T>;
-
-	template<class T>
-	using WeakPtr = std::weak_ptr<T>;
-
 public:
 	CCanvasWidget(QWidget* parent = nullptr, SharedPtr<CGridDrawer> pDrawer = nullptr);
 	~CCanvasWidget() = default;
@@ -31,15 +26,8 @@ public:
 protected:
 	void		paintEvent(QPaintEvent* pEvent) override;
 
-public:
-	void		SetGridDimensions(int iRowCount, int iColumnCount);
-
-public slots:
-	void		OnSTToggled(bool bChecked);
-
 private:
 	SharedPtr<CGridDrawer>	m_pDrawer;
-	bool					m_bDrawSpanTree;
 };
 ////////////////////////////////////////////////////////////////////
 
