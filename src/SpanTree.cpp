@@ -58,9 +58,8 @@ void SpanTree::OnSTToggled(bool bChecked)
 
 void SpanTree::OnOrderChanged(QString const& strText)
 {
-	CSTGenerator* pGenerator = CSTGenerator::GetInstance();
-	if (pGenerator != nullptr)
-		pGenerator->SetOrder(strText);
+	CSTGenerator& oGenerator = CSTGenerator::GetInstance();
+	oGenerator.SetOrder(strText);
 	
 	if (m_pDrawer != nullptr)
 		m_pDrawer->ResetSTCache();

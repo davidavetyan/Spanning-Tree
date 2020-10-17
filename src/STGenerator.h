@@ -40,10 +40,7 @@ private:
 	void operator=(const CSTGenerator&) = delete;
 
 public:
-	static CSTGenerator*	GetInstance();
-	static void				ReleaseInstance();
-private:
-	static CSTGenerator*	s_pInstance;
+	static CSTGenerator&	GetInstance();
 
 public:
 	void	SetOrder(QString const& strText);

@@ -8,23 +8,10 @@
 std::random_device rand_device;
 std::mt19937 mt_19937(rand_device());
 
-CSTGenerator* CSTGenerator::s_pInstance = nullptr;
-
-CSTGenerator* CSTGenerator::GetInstance()
+CSTGenerator& CSTGenerator::GetInstance()
 {
-	if (s_pInstance == nullptr)
-		s_pInstance = new CSTGenerator();
-
-	return s_pInstance;
-}
-
-void CSTGenerator::ReleaseInstance()
-{
-	if (s_pInstance != nullptr)
-	{
-		delete s_pInstance;
-		s_pInstance = nullptr;
-	}
+	static CSTGenerator oSTGenerator;
+	return oSTGenerator;
 }
 
 void CSTGenerator::SetOrder(QString const& strText)

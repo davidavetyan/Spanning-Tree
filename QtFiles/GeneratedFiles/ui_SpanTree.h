@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'SpanTree.ui'
 **
-** Created by: Qt User Interface Compiler version 5.11.1
+** Created by: Qt User Interface Compiler version 5.14.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -48,72 +48,72 @@ public:
     void setupUi(QMainWindow *SpanTreeClass)
     {
         if (SpanTreeClass->objectName().isEmpty())
-            SpanTreeClass->setObjectName(QStringLiteral("SpanTreeClass"));
+            SpanTreeClass->setObjectName(QString::fromUtf8("SpanTreeClass"));
         SpanTreeClass->setWindowModality(Qt::WindowModal);
         SpanTreeClass->resize(826, 637);
         centralWidget = new QWidget(SpanTreeClass);
-        centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         splitter_3 = new QSplitter(centralWidget);
-        splitter_3->setObjectName(QStringLiteral("splitter_3"));
+        splitter_3->setObjectName(QString::fromUtf8("splitter_3"));
         splitter_3->setOrientation(Qt::Horizontal);
         label = new QLabel(splitter_3);
-        label->setObjectName(QStringLiteral("label"));
+        label->setObjectName(QString::fromUtf8("label"));
         splitter_3->addWidget(label);
         rowSpinBox = new QSpinBox(splitter_3);
-        rowSpinBox->setObjectName(QStringLiteral("rowSpinBox"));
+        rowSpinBox->setObjectName(QString::fromUtf8("rowSpinBox"));
         splitter_3->addWidget(rowSpinBox);
 
         gridLayout->addWidget(splitter_3, 0, 0, 1, 1);
 
         splitter_2 = new QSplitter(centralWidget);
-        splitter_2->setObjectName(QStringLiteral("splitter_2"));
+        splitter_2->setObjectName(QString::fromUtf8("splitter_2"));
         splitter_2->setOrientation(Qt::Horizontal);
         label_2 = new QLabel(splitter_2);
-        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setObjectName(QString::fromUtf8("label_2"));
         splitter_2->addWidget(label_2);
         colSpinBox = new QSpinBox(splitter_2);
-        colSpinBox->setObjectName(QStringLiteral("colSpinBox"));
+        colSpinBox->setObjectName(QString::fromUtf8("colSpinBox"));
         splitter_2->addWidget(colSpinBox);
 
         gridLayout->addWidget(splitter_2, 0, 1, 1, 1);
 
         splitter = new QSplitter(centralWidget);
-        splitter->setObjectName(QStringLiteral("splitter"));
+        splitter->setObjectName(QString::fromUtf8("splitter"));
         splitter->setOrientation(Qt::Horizontal);
         label_3 = new QLabel(splitter);
-        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setObjectName(QString::fromUtf8("label_3"));
         splitter->addWidget(label_3);
         orderComboBox = new QComboBox(splitter);
-        orderComboBox->setObjectName(QStringLiteral("orderComboBox"));
+        orderComboBox->setObjectName(QString::fromUtf8("orderComboBox"));
         splitter->addWidget(orderComboBox);
 
         gridLayout->addWidget(splitter, 0, 2, 1, 1);
 
         stCheckBox = new QCheckBox(centralWidget);
-        stCheckBox->setObjectName(QStringLiteral("stCheckBox"));
+        stCheckBox->setObjectName(QString::fromUtf8("stCheckBox"));
         stCheckBox->setLayoutDirection(Qt::LeftToRight);
 
         gridLayout->addWidget(stCheckBox, 0, 3, 1, 1);
 
         canvasWidget = new QWidget(centralWidget);
-        canvasWidget->setObjectName(QStringLiteral("canvasWidget"));
+        canvasWidget->setObjectName(QString::fromUtf8("canvasWidget"));
 
         gridLayout->addWidget(canvasWidget, 1, 0, 1, 4);
 
         SpanTreeClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(SpanTreeClass);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
+        menuBar->setObjectName(QString::fromUtf8("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 826, 20));
         SpanTreeClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(SpanTreeClass);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
+        mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
         SpanTreeClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(SpanTreeClass);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
+        statusBar->setObjectName(QString::fromUtf8("statusBar"));
         SpanTreeClass->setStatusBar(statusBar);
 
         retranslateUi(SpanTreeClass);
@@ -123,11 +123,11 @@ public:
 
     void retranslateUi(QMainWindow *SpanTreeClass)
     {
-        SpanTreeClass->setWindowTitle(QApplication::translate("SpanTreeClass", "SpanTree", nullptr));
-        label->setText(QApplication::translate("SpanTreeClass", "Row Count", nullptr));
-        label_2->setText(QApplication::translate("SpanTreeClass", "Column Count", nullptr));
-        label_3->setText(QApplication::translate("SpanTreeClass", " Order", nullptr));
-        stCheckBox->setText(QApplication::translate("SpanTreeClass", "Show Spanning Tree", nullptr));
+        SpanTreeClass->setWindowTitle(QCoreApplication::translate("SpanTreeClass", "SpanTree", nullptr));
+        label->setText(QCoreApplication::translate("SpanTreeClass", "Row Count", nullptr));
+        label_2->setText(QCoreApplication::translate("SpanTreeClass", "Column Count", nullptr));
+        label_3->setText(QCoreApplication::translate("SpanTreeClass", " Order", nullptr));
+        stCheckBox->setText(QCoreApplication::translate("SpanTreeClass", "Show Spanning Tree", nullptr));
     } // retranslateUi
 
 };

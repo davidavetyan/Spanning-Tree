@@ -71,9 +71,6 @@ private:
 
 inline CGridDrawer::~CGridDrawer()
 {
-	CSTGenerator* pGenerator = CSTGenerator::GetInstance();
-	if (pGenerator != nullptr)
-		pGenerator->ReleaseInstance();
 }
 
 inline CGridDrawer::CGridDrawer(SharedPtr<CGridGraph> pGraph)

@@ -114,9 +114,8 @@ void CGridDrawer::CreateSTCache()
 
 	if (m_pSTCache == nullptr)
 		m_pSTCache = std::make_shared<CGridGraph>();
-	CSTGenerator* pGenerator = CSTGenerator::GetInstance();
-	if (pGenerator != nullptr)
-		pGenerator->GetSpanTree(*m_pGraph, *m_pSTCache);
+	CSTGenerator& oGenerator = CSTGenerator::GetInstance();
+	oGenerator.GetSpanTree(*m_pGraph, *m_pSTCache);
 }
 
 void CGridDrawer::ResetSTCache()
