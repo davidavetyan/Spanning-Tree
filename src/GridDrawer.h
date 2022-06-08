@@ -43,8 +43,6 @@ class CGridDrawer : public CDrawer
 public:
 	CGridDrawer() = default;
 	virtual ~CGridDrawer();
-	CGridDrawer(CGridDrawer const&) = default;
-	CGridDrawer& operator=(CGridDrawer const&) = default;
 	
 	inline	CGridDrawer(SharedPtr<CGridGraph> pGraph);
 	inline	CGridDrawer(CGridDrawer&& oDrawer) noexcept;

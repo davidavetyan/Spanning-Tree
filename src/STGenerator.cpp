@@ -3,6 +3,9 @@
 // STL includes
 #include <random>
 
+// Qt includes
+#include <QPoint>
+
 #include "Matrix.h"
 
 std::random_device rand_device;

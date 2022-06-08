@@ -10,11 +10,11 @@ void CGridGraph::Reset(size_t nRow, size_t nCol)
 	if (isEmpty())
 		return;
 
-	for (int i = 0; i <= m_nRowCount; ++i)
+	for (size_t i = 0; i <= m_nRowCount; ++i)
 	{
-		for (int j = 0; j <= m_nColCount; ++j)
+		for (size_t j = 0; j <= m_nColCount; ++j)
 		{
-			m_mxEdges(i, j) = 0;
+			m_mxEdges(i, j) = {};
 		}
 	}
 }
@@ -24,14 +24,14 @@ void CGridGraph::PopulateFull()
 	if (isEmpty())
 		return;
 
-	for (int j = 0; j < m_nColCount + 1; ++j)
+	for (size_t j = 0; j < m_nColCount + 1; ++j)
 	{
-		if (0 == j)
+		if (j == 0)
 		{
 			m_mxEdges(0, 0) = (EEdgeFlags)EEdgeType::eRight | EEdgeType::eBottom;
 			m_mxEdges(m_nRowCount, 0) = (EEdgeFlags)EEdgeType::eRight | EEdgeType::eTop;
 		}
-		else if (m_nColCount == j)
+		else if (j == m_nColCount)
 		{
 			m_mxEdges(0, m_nColCount) = (EEdgeFlags)EEdgeType::eLeft | EEdgeType::eBottom;
 			m_mxEdges(m_nRowCount, m_nColCount) = (EEdgeFlags)EEdgeType::eLeft | EEdgeType::eTop;
@@ -43,15 +43,15 @@ void CGridGraph::PopulateFull()
 		}
 	}
 
-	for (int i = 1; i < m_nRowCount; ++i)
+	for (size_t i = 1; i < m_nRowCount; ++i)
 	{
 		m_mxEdges(i, 0) = (EEdgeFlags)EEdgeType::eRight | EEdgeType::eTop | EEdgeType::eBottom;
 		m_mxEdges(i, m_nColCount) = (EEdgeFlags)EEdgeType::eLeft | EEdgeType::eTop | EEdgeType::eBottom;
 	}
 
-	for (int i = 1; i < m_nRowCount; ++i)
+	for (size_t i = 1; i < m_nRowCount; ++i)
 	{
-		for(int j = 1; j < m_nColCount; ++j)
+		for(size_t j = 1; j < m_nColCount; ++j)
 		{
 			m_mxEdges(i, j) = (EEdgeFlags)EEdgeType::eLeft | EEdgeType::eRight | EEdgeType::eTop | EEdgeType::eBottom;
 		}

@@ -12,6 +12,7 @@ CCanvasWidget::CCanvasWidget(QWidget* parent, SharedPtr<CGridDrawer> pDrawer)
 
 void CCanvasWidget::paintEvent(QPaintEvent* pEvent)
 {
+	Q_UNUSED(pEvent)
 	QPainter oPainter(this);
 
 	m_pDrawer->Draw(&oPainter, size());
