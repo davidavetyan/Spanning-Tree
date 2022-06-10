@@ -4,13 +4,13 @@
 #include <QSpinBox>
 #include <QSettings>
 
-#include "gridgraph.h"
+#include "core_gridgraph.h"
 
-#include "gui_canvaswidget.h"
-#include "gui_griddrawer.h"
+#include "canvaswidget.h"
+#include "griddrawer.h"
 
 ////////////////////////////////////////////////////////////////////
-namespace core {
+namespace gui {
 ////////////////////////////////////////////////////////////////////
 
 CSpanTree::CSpanTree(QWidget* parent)
@@ -36,10 +36,10 @@ CSpanTree::CSpanTree(QWidget* parent)
 	QCheckBox* pSTCheckBox = ui.stCheckBox;
 	connect(pSTCheckBox, &QCheckBox::toggled, this, &CSpanTree::OnSTToggled);
 
-	m_pGraph = std::make_shared<CGridGraph>(0, 0);
-	m_pDrawer = std::make_shared<gui::CGridDrawer>(m_pGraph);
+	m_pGraph = std::make_shared<core::CGridGraph>(0, 0);
+	m_pDrawer = std::make_shared<CGridDrawer>(m_pGraph);
 
-	m_pCanvasWidget = new gui::CCanvasWidget(this, m_pDrawer);
+	m_pCanvasWidget = new CCanvasWidget(this, m_pDrawer);
 
 	QLayout* pMainLayout = new QVBoxLayout;
 	pMainLayout->addWidget(m_pCanvasWidget);
@@ -63,7 +63,7 @@ void CSpanTree::OnSTToggled(bool bChecked)
 
 void CSpanTree::OnOrderChanged(QString const& strText)
 {
-	CSTGenerator& oGenerator = CSTGenerator::GetInstance();
+	core::CSTGenerator& oGenerator = core::CSTGenerator::GetInstance();
 	oGenerator.SetOrder(strText);
 	
 	if (m_pDrawer != nullptr)
@@ -86,5 +86,5 @@ void CSpanTree::OnDimensionChanged()
 }
 
 ////////////////////////////////////////////////////////////////////
-} // namespace core
+} // namespace gui
 ////////////////////////////////////////////////////////////////////

@@ -70,11 +70,11 @@
     <ClCompile Include="src\core\gridgraph.cpp">
       <Filter>Core\Impl</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\spantree.cpp">
-      <Filter>Core\Impl</Filter>
-    </ClCompile>
     <ClCompile Include="src\core\stgenerator.cpp">
       <Filter>Core\Impl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\spantree.cpp">
+      <Filter>Gui\Impl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -84,11 +84,11 @@
     <QtMoc Include="src\gui\griddrawer.h">
       <Filter>Gui</Filter>
     </QtMoc>
-    <QtMoc Include="src\core\spantree.h">
-      <Filter>Core</Filter>
-    </QtMoc>
     <QtMoc Include="src\core\stgenerator.h">
       <Filter>Core</Filter>
+    </QtMoc>
+    <QtMoc Include="src\gui\spantree.h">
+      <Filter>Gui</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

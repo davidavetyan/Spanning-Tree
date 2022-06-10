@@ -133,10 +133,10 @@
   <ItemGroup>
     <ClCompile Include="src\app\main.cpp" />
     <ClCompile Include="src\core\gridgraph.cpp" />
-    <ClCompile Include="src\core\spantree.cpp" />
     <ClCompile Include="src\core\stgenerator.cpp" />
     <ClCompile Include="src\gui\canvaswidget.cpp" />
     <ClCompile Include="src\gui\griddrawer.cpp" />
+    <ClCompile Include="src\gui\spantree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\gui\canvaswidget.h" />
@@ -147,16 +147,16 @@
   <ItemGroup>
     <ClInclude Include="src\core\gridgraph.h" />
     <ClInclude Include="src\core\matrix.h" />
+    <QtMoc Include="src\gui\spantree.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)src\include;.\GeneratedFiles;.\include;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;.\GeneratedFiles\$(ConfigurationName)</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)src\include;.\GeneratedFiles;.\include;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;.\GeneratedFiles\$(ConfigurationName)</IncludePath>
+    </QtMoc>
     <ClInclude Include="src\include\core_gridgraph.h" />
     <ClInclude Include="src\include\core_spantree.h" />
     <ClInclude Include="src\include\core_stgenerator.h" />
     <ClInclude Include="src\include\gui_canvaswidget.h" />
     <ClInclude Include="src\include\gui_griddrawer.h" />
     <QtMoc Include="src\core\stgenerator.h" />
-    <QtMoc Include="src\core\spantree.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)src\include;.\GeneratedFiles;.\include;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;.\GeneratedFiles\$(ConfigurationName)</IncludePath>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)src\include;.\GeneratedFiles;.\include;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;.\GeneratedFiles\$(ConfigurationName)</IncludePath>
-    </QtMoc>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -1,4 +1,4 @@
-#include "core_spantree.h"
+#include "gui_spantree.h"
 
 #include <QtWidgets/QApplication>
 #include <QSettings>
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     }
 #endif
 
-	core::CSpanTree w;
+	gui::CSpanTree w;
 	w.show();
 	return a.exec();
 }
