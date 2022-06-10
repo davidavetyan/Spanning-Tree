@@ -7,10 +7,10 @@
 namespace core {
 ////////////////////////////////////////////////////////////////////
 
-/*
- * class CGridGraph
- * Represents a grid graph of size m x n. Is created empty by default.
- */
+////////////////////////////////////////////////////////////////////
+// class CGridGraph
+// Represents a grid graph of size m x n. Is created empty by default.
+//
 class CGridGraph
 {
 public:

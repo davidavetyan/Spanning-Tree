@@ -38,7 +38,7 @@ RESOURCES += \
 INCLUDEPATH += \
 	src/include
 
-UI_DIR=../GeneratedFiles
-MOC_DIR=../GeneratedFiles
-RCC_DIR=../GeneratedFiles
-OBJECTS_DIR=./obj
+UI_DIR = ../GeneratedFiles
+MOC_DIR = ../GeneratedFiles
+RCC_DIR = ../GeneratedFiles
+OBJECTS_DIR = ./obj
