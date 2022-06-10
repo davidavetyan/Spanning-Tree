@@ -1,14 +1,19 @@
-#include "SpanTree.h"
+#include "spantree.h"
 
 // Qt includes
 #include <QSpinBox>
 #include <QSettings>
 
-#include "CanvasWidget.h"
-#include "GridDrawer.h"
-#include "GridGraph.h"
+#include "gridgraph.h"
 
-SpanTree::SpanTree(QWidget* parent)
+#include "gui_canvaswidget.h"
+#include "gui_griddrawer.h"
+
+////////////////////////////////////////////////////////////////////
+namespace core {
+////////////////////////////////////////////////////////////////////
+
+CSpanTree::CSpanTree(QWidget* parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
@@ -18,23 +23,23 @@ SpanTree::SpanTree(QWidget* parent)
 	QSpinBox* pRowBox = ui.rowSpinBox;
 	QSpinBox* pColBox = ui.colSpinBox;
 
-	connect(pRowBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &SpanTree::OnDimensionChanged);
-	connect(pColBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &SpanTree::OnDimensionChanged);
+	connect(pRowBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &CSpanTree::OnDimensionChanged);
+	connect(pColBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &CSpanTree::OnDimensionChanged);
 
 	QComboBox* pOrderComboBox = ui.orderComboBox;
 	pOrderComboBox->addItem("Random");
 	pOrderComboBox->addItem("LIFO");
 	pOrderComboBox->addItem("FIFO");
 
-	connect(pOrderComboBox, &QComboBox::currentTextChanged, this, &SpanTree::OnOrderChanged);
+	connect(pOrderComboBox, &QComboBox::currentTextChanged, this, &CSpanTree::OnOrderChanged);
 
 	QCheckBox* pSTCheckBox = ui.stCheckBox;
-	connect(pSTCheckBox, &QCheckBox::toggled, this, &SpanTree::OnSTToggled);
+	connect(pSTCheckBox, &QCheckBox::toggled, this, &CSpanTree::OnSTToggled);
 
 	m_pGraph = std::make_shared<CGridGraph>(0, 0);
-	m_pDrawer = std::make_shared<CGridDrawer>(m_pGraph);
+	m_pDrawer = std::make_shared<gui::CGridDrawer>(m_pGraph);
 
-	m_pCanvasWidget = new CCanvasWidget(this, m_pDrawer);
+	m_pCanvasWidget = new gui::CCanvasWidget(this, m_pDrawer);
 
 	QLayout* pMainLayout = new QVBoxLayout;
 	pMainLayout->addWidget(m_pCanvasWidget);
@@ -42,12 +47,12 @@ SpanTree::SpanTree(QWidget* parent)
 	window->setLayout(pMainLayout);
 }
 
-SpanTree::~SpanTree()
+CSpanTree::~CSpanTree()
 {
 	 
 }
 
-void SpanTree::OnSTToggled(bool bChecked)
+void CSpanTree::OnSTToggled(bool bChecked)
 {
 	if (m_pDrawer != nullptr)
 		m_pDrawer->SetDrawST(bChecked);
@@ -56,7 +61,7 @@ void SpanTree::OnSTToggled(bool bChecked)
 		m_pCanvasWidget->repaint();
 }
 
-void SpanTree::OnOrderChanged(QString const& strText)
+void CSpanTree::OnOrderChanged(QString const& strText)
 {
 	CSTGenerator& oGenerator = CSTGenerator::GetInstance();
 	oGenerator.SetOrder(strText);
@@ -68,7 +73,7 @@ void SpanTree::OnOrderChanged(QString const& strText)
 		m_pCanvasWidget->repaint();
 }
 
-void SpanTree::OnDimensionChanged()
+void CSpanTree::OnDimensionChanged()
 {
 	QSpinBox* pRowBox = ui.rowSpinBox;
 	QSpinBox* pColBox = ui.colSpinBox;
@@ -79,3 +84,7 @@ void SpanTree::OnDimensionChanged()
 	if (m_pCanvasWidget != nullptr)
 		m_pCanvasWidget->repaint();
 }
+
+////////////////////////////////////////////////////////////////////
+} // namespace core
+////////////////////////////////////////////////////////////////////

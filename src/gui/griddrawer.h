@@ -1,7 +1,8 @@
 #ifndef GRID_DRAWER_H
 #define GRID_DRAWER_H
 
-#include "GridGraph.h"
+#include "core_gridgraph.h"
+#include "core_stgenerator.h"
 
 // STL includes
 #include <memory>
@@ -9,7 +10,9 @@
 // Qt includes
 #include <QPainter>
 
-#include "STGenerator.h"
+////////////////////////////////////////////////////////////////////
+namespace gui {
+////////////////////////////////////////////////////////////////////
 
 class CDrawer : public QObject
 {
@@ -44,7 +47,7 @@ public:
 	CGridDrawer() = default;
 	virtual ~CGridDrawer();
 	
-	inline	CGridDrawer(SharedPtr<CGridGraph> pGraph);
+	inline	CGridDrawer(SharedPtr<core::CGridGraph> pGraph);
 	inline	CGridDrawer(CGridDrawer&& oDrawer) noexcept;
 	inline	CGridDrawer&	operator=(CGridDrawer&& oDrawer) noexcept;
 
@@ -55,13 +58,13 @@ public:
 	void	ResetSTCache();
 
 private:
-	void	DrawEdges(QPainter* pPainter, SharedPtr<const CGridGraph> pGraph, QSize szOffset, QSize szSpacing) const;
+	void	DrawEdges(QPainter* pPainter, SharedPtr<const core::CGridGraph> pGraph, QSize szOffset, QSize szSpacing) const;
 	void	CreateSTCache();
 
 private:
-	SharedPtr<CGridGraph>	m_pGraph; //! Pointer to the CGridGraph object that should be drawn
-	SharedPtr<CGridGraph>	m_pSTCache; //! Cache for the spanning tree object
-	bool					m_bDrawST; //! Shows whether the spanning tree should be drawn
+	SharedPtr<core::CGridGraph>	m_pGraph;	//! Pointer to the CGridGraph object that should be drawn
+	SharedPtr<core::CGridGraph>	m_pSTCache; //! Cache for the spanning tree object
+	bool						m_bDrawST;	//! Shows whether the spanning tree should be drawn
 };
 ////////////////////////////////////////////////////////////////////
 
@@ -71,7 +74,7 @@ inline CGridDrawer::~CGridDrawer()
 {
 }
 
-inline CGridDrawer::CGridDrawer(SharedPtr<CGridGraph> pGraph)
+inline CGridDrawer::CGridDrawer(SharedPtr<core::CGridGraph> pGraph)
 	: m_pGraph(std::move(pGraph)), m_bDrawST(false)
 {
 
@@ -102,4 +105,9 @@ inline CGridDrawer& CGridDrawer::operator=(CGridDrawer&& oDrawer) noexcept
 }
 
 ////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////
+} // namespace gui
+////////////////////////////////////////////////////////////////////
+
 #endif

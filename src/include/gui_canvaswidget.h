@@ -1,0 +1,1 @@
+#include "../gui/canvaswidget.h"

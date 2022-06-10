@@ -1,4 +1,4 @@
-#include "STGenerator.h"
+#include "stgenerator.h"
 
 // STL includes
 #include <random>
@@ -6,7 +6,11 @@
 // Qt includes
 #include <QPoint>
 
-#include "Matrix.h"
+#include "matrix.h"
+
+////////////////////////////////////////////////////////////////////
+namespace core {
+////////////////////////////////////////////////////////////////////
 
 std::random_device rand_device;
 std::mt19937 mt_19937(rand_device());
@@ -124,3 +128,7 @@ void CSTGenerator::GetSpanTree(CGridGraph const& oGraph, CGridGraph& oSpanTree) 
 //	else
 //		m_eOrder = it.value();
 //}
+
+////////////////////////////////////////////////////////////////////
+} // namespace core
+////////////////////////////////////////////////////////////////////

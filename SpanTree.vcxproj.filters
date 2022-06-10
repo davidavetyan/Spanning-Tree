@@ -20,11 +20,23 @@
       <Extensions>moc;h;cpp</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
-    <Filter Include="Main">
-      <UniqueIdentifier>{379d9403-1942-4f50-9810-906c207d7b71}</UniqueIdentifier>
+    <Filter Include="Core">
+      <UniqueIdentifier>{b82deb5d-58a6-4528-a86e-232293e394fb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\Impl">
-      <UniqueIdentifier>{98637d61-f385-45d1-a48a-2e885a7ecdae}</UniqueIdentifier>
+    <Filter Include="Gui">
+      <UniqueIdentifier>{e930239e-dbc1-4780-b96f-3a40d399de40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application">
+      <UniqueIdentifier>{251e8c1d-5b5a-4892-b587-ed63f551553e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Impl">
+      <UniqueIdentifier>{9b524d0e-9153-41c1-94f7-de6f2b25492a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\Impl">
+      <UniqueIdentifier>{51519b5a-27b9-4ac5-ba1a-a8e5381bdb0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{7614bb26-c981-45df-9830-682ab7082fbf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -38,53 +50,68 @@
     </QtRcc>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\CanvasWidget.cpp">
-      <Filter>Main\Impl</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GridGraph.cpp">
-      <Filter>Main\Impl</Filter>
-    </ClCompile>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Main\Impl</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SpanTree.cpp">
-      <Filter>Main\Impl</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GridDrawer.cpp">
-      <Filter>Main\Impl</Filter>
-    </ClCompile>
-    <ClCompile Include="src\STGenerator.cpp">
-      <Filter>Main\Impl</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="src\CanvasWidget.h">
-      <Filter>Main</Filter>
-    </QtMoc>
-    <QtMoc Include="src\SpanTree.h">
-      <Filter>Main</Filter>
-    </QtMoc>
-    <QtMoc Include="src\STGenerator.h">
-      <Filter>Main</Filter>
-    </QtMoc>
-    <QtMoc Include="src\GridDrawer.h">
-      <Filter>Main</Filter>
-    </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\GridGraph.h">
-      <Filter>Main</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Matrix.h">
-      <Filter>Main</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="SpanTree.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\SpanTree.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\app\main.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\canvaswidget.cpp">
+      <Filter>Gui\Impl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\griddrawer.cpp">
+      <Filter>Gui\Impl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\gridgraph.cpp">
+      <Filter>Core\Impl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\spantree.cpp">
+      <Filter>Core\Impl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\stgenerator.cpp">
+      <Filter>Core\Impl</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="src\gui\canvaswidget.h">
+      <Filter>Gui</Filter>
+    </QtMoc>
+    <QtMoc Include="src\gui\griddrawer.h">
+      <Filter>Gui</Filter>
+    </QtMoc>
+    <QtMoc Include="src\core\spantree.h">
+      <Filter>Core</Filter>
+    </QtMoc>
+    <QtMoc Include="src\core\stgenerator.h">
+      <Filter>Core</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\core\gridgraph.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\matrix.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\core_gridgraph.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\core_spantree.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\core_stgenerator.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\gui_canvaswidget.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\gui_griddrawer.h">
+      <Filter>Include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

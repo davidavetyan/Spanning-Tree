@@ -1,4 +1,8 @@
-#include "GridDrawer.h"
+#include "griddrawer.h"
+
+////////////////////////////////////////////////////////////////////
+namespace gui {
+////////////////////////////////////////////////////////////////////
 
 void CGridDrawer::Draw(QPainter* pPainter, QSize szWidget)
 {
@@ -60,7 +64,7 @@ void CGridDrawer::ResetGraphDimensions(int nRow, int nCol, bool bPopulate)
 	ResetSTCache();
 }
 
-void CGridDrawer::DrawEdges(QPainter* pPainter, SharedPtr<const CGridGraph> pGraph, QSize szOffset, QSize szSpacing) const
+void CGridDrawer::DrawEdges(QPainter* pPainter, SharedPtr<const core::CGridGraph> pGraph, QSize szOffset, QSize szSpacing) const
 {
 	if (!pGraph || pGraph->isEmpty())
 		return;
@@ -71,7 +75,7 @@ void CGridDrawer::DrawEdges(QPainter* pPainter, SharedPtr<const CGridGraph> pGra
 	const int ixSpacing = szSpacing.width();
 	const int iySpacing = szSpacing.height();
 
-	CMatrix<CGridGraph::EEdgeFlags> const& vecEdges = pGraph->GetEdges();
+	core::CMatrix<core::CGridGraph::EEdgeFlags> const& vecEdges = pGraph->GetEdges();
 	for (int i = 0; i < vecEdges.RowCount(); ++i)
 	{
 		for (int j = 0; j < vecEdges.ColCount(); ++j)
@@ -82,23 +86,23 @@ void CGridDrawer::DrawEdges(QPainter* pPainter, SharedPtr<const CGridGraph> pGra
 			pntFirst.setX(ixOffset + j * ixSpacing);
 			pntFirst.setY(iyOffset + i * iySpacing);
 
-			CGridGraph::EEdgeFlags eEdges = vecEdges(i, j);
-			if (eEdges & CGridGraph::EEdgeType::eTop)
+			core::CGridGraph::EEdgeFlags eEdges = vecEdges(i, j);
+			if (eEdges & core::CGridGraph::EEdgeType::eTop)
 			{
 				pntSecond = pntFirst - QPoint{0, iySpacing};
 				pPainter->drawLine(pntFirst, pntSecond);
 			}
-			if (eEdges & CGridGraph::EEdgeType::eRight)
+			if (eEdges & core::CGridGraph::EEdgeType::eRight)
 			{
 				pntSecond = pntFirst + QPoint{ ixSpacing, 0 };
 				pPainter->drawLine(pntFirst, pntSecond);
 			}
-			if (eEdges & CGridGraph::EEdgeType::eBottom)
+			if (eEdges & core::CGridGraph::EEdgeType::eBottom)
 			{
 				pntSecond = pntFirst + QPoint{ 0, iySpacing };
 				pPainter->drawLine(pntFirst, pntSecond);
 			}
-			if (eEdges & CGridGraph::EEdgeType::eLeft)
+			if (eEdges & core::CGridGraph::EEdgeType::eLeft)
 			{
 				pntSecond = pntFirst - QPoint{ ixSpacing, 0 };
 				pPainter->drawLine(pntFirst, pntSecond);
@@ -113,8 +117,8 @@ void CGridDrawer::CreateSTCache()
 		return;
 
 	if (m_pSTCache == nullptr)
-		m_pSTCache = std::make_shared<CGridGraph>();
-	CSTGenerator& oGenerator = CSTGenerator::GetInstance();
+		m_pSTCache = std::make_shared<core::CGridGraph>();
+	core::CSTGenerator& oGenerator = core::CSTGenerator::GetInstance();
 	oGenerator.GetSpanTree(*m_pGraph, *m_pSTCache);
 }
 
@@ -127,3 +131,7 @@ void CGridDrawer::SetDrawST(bool bDrawST)
 {
 	m_bDrawST = bDrawST;
 }
+
+////////////////////////////////////////////////////////////////////
+} // namespace gui
+////////////////////////////////////////////////////////////////////
