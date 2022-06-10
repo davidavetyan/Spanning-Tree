@@ -9,20 +9,20 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    src/app/main.cpp
+    src/app/main.cpp \
     src/core/gridgraph.cpp \
     src/core/stgenerator.cpp \
     src/core/spantree.cpp \
     src/gui/canvaswidget.cpp \
-    src/gui/griddrawer.cpp \
+    src/gui/griddrawer.cpp
 
 HEADERS += \
     src/core/gridgraph.h \
     src/core/matrix.h \
     src/core/stgenerator.h \
-    src/core/spantree.h
+    src/core/spantree.h \
     src/gui/canvaswidget.h \
-    src/gui/griddrawer.h \
+    src/gui/griddrawer.h
 
 FORMS += \
     SpanTree.ui
