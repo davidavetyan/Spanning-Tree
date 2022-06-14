@@ -2,43 +2,37 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+TEMPLATE = app
+TARGET = SpanTree
+
+#Default configuration
 CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES += \
-    src/app/main.cpp \
-    src/core/gridgraph.cpp \
-    src/core/stgenerator.cpp \
-    src/gui/spantree.cpp \
-    src/gui/canvaswidget.cpp \
-    src/gui/griddrawer.cpp
-
-HEADERS += \
-    src/core/matrix.h \
-    src/core/gridgraph.h \
-    src/core/stgenerator.h \
-    src/gui/spantree.h \
-    src/gui/canvaswidget.h \
-    src/gui/griddrawer.h
-
-FORMS += \
-    SpanTree.ui
-
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-RESOURCES += \
-    SpanTree.qrc
-	
-INCLUDEPATH += \
-	src/include
-
-UI_DIR = ../GeneratedFiles
-MOC_DIR = ../GeneratedFiles
-RCC_DIR = ../GeneratedFiles
+#Set build generated file directories
+CONFIG(debug, debug|release) {
+	message(Generating $$TARGET Makefile for $(QMAKESPEC) (Debug mode).)
+	MOC_DIR = ../GeneratedFiles/Debug
+	UI_DIR  = ../GeneratedFiles/Debug
+	RCC_DIR = ../GeneratedFiles/Debug
+} else {
+    message(Generating $$TARGET Makefile for $(QMAKESPEC) (Release mode))
+	MOC_DIR = ../GeneratedFiles/Release
+	UI_DIR  = ../GeneratedFiles/Release
+	RCC_DIR = ../GeneratedFiles/Release
+}
 OBJECTS_DIR = ./obj
+
+#Add include files search paths
+INCLUDEPATH += src/include
+
+#Include file(s)
+include( $${TARGET}.pri )
