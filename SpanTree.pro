@@ -35,4 +35,4 @@ OBJECTS_DIR = ./obj
 INCLUDEPATH += src/include
 
 #Include file(s)
-include( $${TARGET}.pri )
+include($${TARGET}.pri)
