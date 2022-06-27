@@ -17,6 +17,13 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+#WebAssembly debug specific flags
+wasm: equals(WASM_DEBUG, "true") {
+	CONFIG += debug
+	QT_WASM_TOTAL_MEMORY = 2GB
+	QT_WASM_PTHREAD_POOL_SIZE = 8
+}
+
 #Set build generated file directories
 CONFIG(debug, debug|release) {
 	message(Generating $$TARGET Makefile for $(QMAKESPEC) (Debug mode).)
@@ -29,7 +36,7 @@ CONFIG(debug, debug|release) {
 	UI_DIR  = ../GeneratedFiles/Release
 	RCC_DIR = ../GeneratedFiles/Release
 }
-OBJECTS_DIR = ./obj
+OBJECTS_DIR = .obj
 
 #Add include files search paths
 INCLUDEPATH += src/include
