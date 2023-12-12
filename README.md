@@ -1,3 +1,3 @@
-Simple app to generate spanning tree for rectangular graphs.
+# Spanning-Tree
 
-To be able to run the application from the standalone .exe file, you need add the Qt plugins directory ($QTDIR/plugins) to your PATH environment variable.
+An application for generating and visualizing spanning trees of rectangular graphs.
