@@ -163,7 +163,6 @@
     <QtMoc Include="src\gui\spantree.h">
     </QtMoc>
     <ClInclude Include="src\include\core_gridgraph.h" />
-    <ClInclude Include="src\include\core_spantree.h" />
     <ClInclude Include="src\include\core_stgenerator.h" />
     <ClInclude Include="src\include\gui_canvaswidget.h" />
     <ClInclude Include="src\include\gui_griddrawer.h" />

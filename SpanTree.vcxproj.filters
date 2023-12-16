@@ -98,9 +98,6 @@
     <ClInclude Include="src\include\core_gridgraph.h">
       <Filter>Include</Filter>
     </ClInclude>
-    <ClInclude Include="src\include\core_spantree.h">
-      <Filter>Include</Filter>
-    </ClInclude>
     <ClInclude Include="src\include\core_stgenerator.h">
       <Filter>Include</Filter>
     </ClInclude>
