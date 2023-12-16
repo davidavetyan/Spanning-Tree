@@ -1,16 +1,18 @@
 #include "gui_spantree.h"
 
-#include <QtWidgets/QApplication>
 #include <QSettings>
+#include <QtWidgets/QApplication>
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
-	QApplication a(argc, argv);
-	a.setStyle("Fusion");
+    QApplication a(argc, argv);
+    a.setStyle("Fusion");
 
 #ifdef Q_OS_WIN
-    QSettings settings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", QSettings::NativeFormat);
-    if (settings.value("AppsUseLightTheme") == 0) 
+    QSettings settings(
+        "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+        QSettings::NativeFormat);
+    if (settings.value("AppsUseLightTheme") == 0)
     {
         QPalette darkPalette;
 
@@ -37,11 +39,12 @@ int main(int argc, char *argv[])
 
         qApp->setPalette(darkPalette);
 
-        qApp->setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }");
+        qApp->setStyleSheet(
+            "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }");
     }
 #endif
 
-	gui::CSpanTree w;
-	w.show();
-	return a.exec();
+    gui::CSpanTree w;
+    w.show();
+    return a.exec();
 }
