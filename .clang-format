@@ -11,7 +11,7 @@ LineEnding: LF
 AccessModifierOffset: -4
 
 DerivePointerAlignment: false
-PointerAlignment: Right
+PointerAlignment: Left
 ReferenceAlignment: Pointer
 
 AlwaysBreakTemplateDeclarations: Yes
