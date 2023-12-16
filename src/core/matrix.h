@@ -12,36 +12,42 @@ namespace core {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//	class CMatrix
-template<typename T, typename Type = size_t, typename = std::enable_if_t<std::is_integral_v<Type>>>
+/**
+    \brief Class for respresenting a two-dimensional matrix.
+
+    \tparam TVal   Type of values stored in the matrix.
+    \tparam TIndex Type of the data
+*/
+template<typename TVal, typename TIndex = size_t,
+         typename = std::enable_if_t<std::is_integral_v<TIndex>>>
 class CMatrix
 {
 public:
     CMatrix() = default;
-    CMatrix(Type nRow, Type nCol) : m_aData(nRow * nCol), m_nDim(nCol) {}
-    CMatrix(Type nRow, Type nCol, T const& tDefaultVal)
+    CMatrix(TIndex nRow, TIndex nCol) : m_aData(nRow * nCol), m_nDim(nCol) {}
+    CMatrix(TIndex nRow, TIndex nCol, TVal const& tDefaultVal)
         : m_aData(nRow * nCol, tDefaultVal)
         , m_nDim(nCol)
     {}
 
 public:
-    T& operator()(Type nRow, Type nCol) { return m_aData[nRow * m_nDim + nCol]; }
-    T const& operator()(Type nRow, Type nCol) const { return m_aData[nRow * m_nDim + nCol]; }
+    TVal& operator()(TIndex nRow, TIndex nCol) { return m_aData[nRow * m_nDim + nCol]; }
+    TVal const& operator()(TIndex nRow, TIndex nCol) const { return m_aData[nRow * m_nDim + nCol]; }
 
-    void Resize(Type nRow, Type nCol)
+    void Resize(TIndex nRow, TIndex nCol)
     {
         m_aData.resize(nRow * nCol);
         m_nDim = nCol;
     }
 
-    Type RowCount() const { return m_nDim == 0 ? 0 : m_aData.size() / m_nDim; }
-    Type ColCount() const { return m_nDim; }
+    TIndex RowCount() const { return m_nDim == 0 ? 0 : m_aData.size() / m_nDim; }
+    TIndex ColCount() const { return m_nDim; }
     QSize GetDimension() const { return QSize(ColCount(), RowCount()); }
     bool IsNull() const { return m_nDim == 0; }
 
 private:
-    std::vector<T> m_aData;
-    Type m_nDim = 0;
+    std::vector<TVal> m_aData;
+    TIndex m_nDim = 0;
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 

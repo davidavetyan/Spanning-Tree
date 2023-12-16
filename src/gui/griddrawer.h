@@ -16,7 +16,7 @@ namespace gui {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// CDrawer
+/// Common abstact base for drawer objects
 //
 class CDrawer : public QObject
 {
@@ -33,7 +33,7 @@ protected:
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// CGridDrawer
+/// Drawer for grid graphs
 //
 class CGridDrawer : public CDrawer
 {
@@ -62,14 +62,16 @@ private:
     void CreateSTCache();
 
 private:
-    SharedPtr<core::CGridGraph> m_pGraph; //! Pointer to the CGridGraph object that should be drawn
-    SharedPtr<core::CGridGraph> m_pSTCache; //! Cache for the spanning tree object
-    bool m_bDrawST;                         //! Shows whether the spanning tree should be drawn
+    SharedPtr<core::CGridGraph> m_pGraph;   ///< Grid graph object that is being drawn
+    SharedPtr<core::CGridGraph> m_pSTCache; ///< Cache for the spanning tree object
+    bool m_bDrawST;                         ///< Whether the spanning tree should be drawn
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+//
 // Inline implementations
+//
 
 inline CDrawer::CDrawer() : m_szOffset({ 10, 10 })
 {}
