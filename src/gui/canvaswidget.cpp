@@ -1,27 +1,26 @@
 #include "canvaswidget.h"
 
 // Qt includes
-#include <QPainter>
 #include <QPaintEvent>
+#include <QPainter>
 
 ////////////////////////////////////////////////////////////////////
 namespace gui {
 ////////////////////////////////////////////////////////////////////
 
 CCanvasWidget::CCanvasWidget(QWidget* parent, SharedPtr<CGridDrawer> pDrawer)
-	: QWidget(parent), m_pDrawer(pDrawer)
-{
-
-}
+    : QWidget(parent)
+    , m_pDrawer(pDrawer)
+{}
 
 void CCanvasWidget::paintEvent(QPaintEvent* pEvent)
 {
-	Q_UNUSED(pEvent)
-	QPainter oPainter(this);
+    Q_UNUSED(pEvent)
+    QPainter oPainter(this);
 
-	m_pDrawer->Draw(&oPainter, size());
+    m_pDrawer->Draw(&oPainter, size());
 }
 
 ////////////////////////////////////////////////////////////////////
 } // namespace gui
-////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////

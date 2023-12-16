@@ -17,21 +17,21 @@ namespace gui {
 //
 class CCanvasWidget : public QWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	// Type definitions
-	template<class T>
-	using SharedPtr = std::shared_ptr<T>;
+    // Type definitions
+    template<class T>
+    using SharedPtr = std::shared_ptr<T>;
 
 public:
-	CCanvasWidget(QWidget* parent = nullptr, SharedPtr<CGridDrawer> pDrawer = nullptr);
-	~CCanvasWidget() = default;
+    CCanvasWidget(QWidget* parent = nullptr, SharedPtr<CGridDrawer> pDrawer = nullptr);
+    ~CCanvasWidget() = default;
 
 protected:
-	void		paintEvent(QPaintEvent* pEvent) override;
+    void paintEvent(QPaintEvent* pEvent) override;
 
 private:
-	SharedPtr<CGridDrawer>	m_pDrawer;
+    SharedPtr<CGridDrawer> m_pDrawer;
 };
 ////////////////////////////////////////////////////////////////////
 

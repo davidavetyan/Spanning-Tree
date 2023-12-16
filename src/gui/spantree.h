@@ -1,8 +1,8 @@
 #ifndef SPANTREE_H
 #define SPANTREE_H
 
-#include <QMainWindow>
 #include "ui_SpanTree.h"
+#include <QMainWindow>
 
 // STL includes
 #include <memory>
@@ -36,26 +36,26 @@ namespace gui {
 //	class CSpanTree
 class CSpanTree : public QMainWindow
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	// Type definitions
-	template<class T>
-	using SharedPtr = std::shared_ptr<T>;
+    // Type definitions
+    template<class T>
+    using SharedPtr = std::shared_ptr<T>;
 
 public:
-	CSpanTree(QWidget *parent = Q_NULLPTR);
-	~CSpanTree();
+    CSpanTree(QWidget* parent = Q_NULLPTR);
+    ~CSpanTree();
 
 public slots:
-	void	OnDimensionChanged();
-	void	OnSTToggled(bool bChecked);
-	void	OnOrderChanged(QString const& strText);
+    void OnDimensionChanged();
+    void OnSTToggled(bool bChecked);
+    void OnOrderChanged(QString const& strText);
 
 private:
-	Ui::SpanTreeClass ui;
-	gui::CCanvasWidget*	m_pCanvasWidget;
-	SharedPtr<core::CGridGraph> m_pGraph;
-	SharedPtr<CGridDrawer> m_pDrawer;
+    Ui::SpanTreeClass ui;
+    gui::CCanvasWidget* m_pCanvasWidget;
+    SharedPtr<core::CGridGraph> m_pGraph;
+    SharedPtr<CGridDrawer> m_pDrawer;
 };
 ////////////////////////////////////////////////////////////////////
 
