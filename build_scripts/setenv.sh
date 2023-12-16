@@ -4,7 +4,7 @@ export BUILD_DIR=build
 export APP_NAME=SpanTree
 export APP_ROOT=$CURRENT_DIR/..
 
-if [ -z ${QTDIR} ] ; then 
+if [ -z ${QTDIR} ] ; then
     export QTDIR=/home/davetyan/depot/Qt/5.15.2/wasm_32
 fi
 
