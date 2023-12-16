@@ -1,4 +1,4 @@
-#Header files
+# Header files
 HEADERS += \
     src/core/matrix.h \
     src/core/gridgraph.h \
@@ -7,7 +7,7 @@ HEADERS += \
     src/gui/canvaswidget.h \
     src/gui/griddrawer.h
 
-#Source files
+# Source files
 SOURCES += \
     src/app/main.cpp \
     src/core/gridgraph.cpp \
@@ -16,10 +16,10 @@ SOURCES += \
     src/gui/canvaswidget.cpp \
     src/gui/griddrawer.cpp
 
-#Resource file(s)
+# Resource file(s)
 RESOURCES += \
     SpanTree.qrc
 
-#Forms
+# Forms
 FORMS += \
     SpanTree.ui

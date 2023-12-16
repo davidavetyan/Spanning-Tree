@@ -6,8 +6,8 @@ cd $APP_ROOT
 
 
 if [ ! -d "./$BUILD_DIR" ]; then
-  	echo -- Error: Build Directory Not Found! --
-	exit /b 1
+    echo -- Error: Build Directory Not Found! --
+    exit /b 1
 fi
 
 cd $CURRENT_DIR

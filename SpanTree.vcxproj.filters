@@ -23,20 +23,23 @@
     <Filter Include="Core">
       <UniqueIdentifier>{b82deb5d-58a6-4528-a86e-232293e394fb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Gui">
-      <UniqueIdentifier>{e930239e-dbc1-4780-b96f-3a40d399de40}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Application">
       <UniqueIdentifier>{251e8c1d-5b5a-4892-b587-ed63f551553e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Core\Impl">
       <UniqueIdentifier>{9b524d0e-9153-41c1-94f7-de6f2b25492a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Gui\Impl">
-      <UniqueIdentifier>{51519b5a-27b9-4ac5-ba1a-a8e5381bdb0b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Include">
       <UniqueIdentifier>{7614bb26-c981-45df-9830-682ab7082fbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{e930239e-dbc1-4780-b96f-3a40d399de40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Impl">
+      <UniqueIdentifier>{51519b5a-27b9-4ac5-ba1a-a8e5381bdb0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qmake Files">
+      <UniqueIdentifier>{8a81c486-ff74-4bc6-8e32-b6db2136e42c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -59,10 +62,10 @@
       <Filter>Application</Filter>
     </ClCompile>
     <ClCompile Include="src\gui\canvaswidget.cpp">
-      <Filter>Gui\Impl</Filter>
+      <Filter>GUI\Impl</Filter>
     </ClCompile>
     <ClCompile Include="src\gui\griddrawer.cpp">
-      <Filter>Gui\Impl</Filter>
+      <Filter>GUI\Impl</Filter>
     </ClCompile>
     <ClCompile Include="src\core\gridgraph.cpp">
       <Filter>Core\Impl</Filter>
@@ -71,18 +74,18 @@
       <Filter>Core\Impl</Filter>
     </ClCompile>
     <ClCompile Include="src\gui\spantree.cpp">
-      <Filter>Gui\Impl</Filter>
+      <Filter>GUI\Impl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\gui\canvaswidget.h">
-      <Filter>Gui</Filter>
+      <Filter>GUI</Filter>
     </QtMoc>
     <QtMoc Include="src\core\stgenerator.h">
       <Filter>Core</Filter>
     </QtMoc>
     <QtMoc Include="src\gui\spantree.h">
-      <Filter>Gui</Filter>
+      <Filter>GUI</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -105,7 +108,7 @@
       <Filter>Include</Filter>
     </ClInclude>
     <ClInclude Include="src\gui\griddrawer.h">
-      <Filter>Gui</Filter>
+      <Filter>GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -115,5 +118,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />
+    <None Include="SpanTree.pri">
+      <Filter>Qmake Files</Filter>
+    </None>
+    <None Include="SpanTree.pro">
+      <Filter>Qmake Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
