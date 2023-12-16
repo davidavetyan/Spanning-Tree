@@ -155,7 +155,7 @@
     <QtMoc Include="src\gui\canvaswidget.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="src\gui\griddrawer.h" />
+    <ClInclude Include="src\gui\griddrawer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\gridgraph.h" />

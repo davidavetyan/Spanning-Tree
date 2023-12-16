@@ -18,7 +18,7 @@ namespace gui {
 //
 /// Common abstact base for drawer objects
 //
-class CDrawer : public QObject
+class CDrawer
 {
 public:
     inline CDrawer();
@@ -37,14 +37,11 @@ protected:
 //
 class CGridDrawer : public CDrawer
 {
-    Q_OBJECT
-
     template<class T>
     using SharedPtr = std::shared_ptr<T>;
 
 public:
     CGridDrawer() = default;
-    virtual ~CGridDrawer();
 
     inline CGridDrawer(SharedPtr<core::CGridGraph> pGraph);
     inline CGridDrawer(CGridDrawer&& oDrawer) noexcept;
@@ -74,9 +71,6 @@ private:
 //
 
 inline CDrawer::CDrawer() : m_szOffset({ 10, 10 })
-{}
-
-inline CGridDrawer::~CGridDrawer()
 {}
 
 inline CGridDrawer::CGridDrawer(SharedPtr<core::CGridGraph> pGraph)

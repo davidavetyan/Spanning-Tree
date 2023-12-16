@@ -78,9 +78,6 @@
     <QtMoc Include="src\gui\canvaswidget.h">
       <Filter>Gui</Filter>
     </QtMoc>
-    <QtMoc Include="src\gui\griddrawer.h">
-      <Filter>Gui</Filter>
-    </QtMoc>
     <QtMoc Include="src\core\stgenerator.h">
       <Filter>Core</Filter>
     </QtMoc>
@@ -106,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="src\include\gui_griddrawer.h">
       <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\griddrawer.h">
+      <Filter>Gui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
