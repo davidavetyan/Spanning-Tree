@@ -9,8 +9,8 @@ void CGridDrawer::Draw(QPainter* pPainter, QSize szWidget)
     if (!m_pGraph || m_pGraph->isEmpty())
         return;
 
-    const int nRowCount = m_pGraph->GetRowCount();
-    const int nColumnCount = m_pGraph->GetColumnCount();
+    const size_t nRowCount = m_pGraph->GetRowCount();
+    const size_t nColumnCount = m_pGraph->GetColumnCount();
 
     if (nRowCount == 0 || nColumnCount == 0)
         return;
@@ -135,4 +135,4 @@ void CGridDrawer::SetDrawST(bool bDrawST)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 } // namespace gui
-  ////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////

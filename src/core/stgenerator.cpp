@@ -49,9 +49,9 @@ void CSTGenerator::GetSpanTree(CGridGraph const& oGraph, CGridGraph& oSpanTree) 
         }
     }
 
-    std::uniform_int_distribution<int> uniform_row_dist(0, nRowCount);
-    std::uniform_int_distribution<int> uniform_col_dist(0, nColCount);
-    std::uniform_int_distribution<int> uniform_pair_dist(0, 1);
+    std::uniform_int_distribution<size_t> uniform_row_dist(0, nRowCount);
+    std::uniform_int_distribution<size_t> uniform_col_dist(0, nColCount);
+    std::uniform_int_distribution<size_t> uniform_pair_dist(0, 1);
 
 
     QVector<QPoint> stVertices;
@@ -60,7 +60,7 @@ void CSTGenerator::GetSpanTree(CGridGraph const& oGraph, CGridGraph& oSpanTree) 
 
     assert(m_eOrder != EOrder::eUndefined);
 
-    int bFront;
+    bool bFront;
     if (EOrder::eLIFO == m_eOrder)
         bFront = 0;
     else
@@ -132,4 +132,4 @@ void CSTGenerator::GetSpanTree(CGridGraph const& oGraph, CGridGraph& oSpanTree) 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 } // namespace core
-  ////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////

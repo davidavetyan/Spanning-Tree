@@ -1,9 +1,11 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
+// STL includes
+#include <vector>
+
 // Qt includes
 #include <QSize>
-#include <QVector>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace core {
@@ -11,61 +13,37 @@ namespace core {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //	class CMatrix
-template<typename T>
+template<typename T, typename Type = size_t, typename = std::enable_if_t<std::is_integral_v<Type>>>
 class CMatrix
 {
 public:
     CMatrix() = default;
-    CMatrix(int nRow, int nCol) : m_aData(nRow * nCol), m_nDim(nCol) {}
-    CMatrix(int nRow, int nCol, T const& tDefaultVal)
+    CMatrix(Type nRow, Type nCol) : m_aData(nRow * nCol), m_nDim(nCol) {}
+    CMatrix(Type nRow, Type nCol, T const& tDefaultVal)
         : m_aData(nRow * nCol, tDefaultVal)
         , m_nDim(nCol)
     {}
 
 public:
-    T& operator()(int nRow, int nCol) { return m_aData[nRow * m_nDim + nCol]; }
-    T const& operator()(int nRow, int nCol) const { return m_aData[nRow * m_nDim + nCol]; }
+    T& operator()(Type nRow, Type nCol) { return m_aData[nRow * m_nDim + nCol]; }
+    T const& operator()(Type nRow, Type nCol) const { return m_aData[nRow * m_nDim + nCol]; }
 
-    void Resize(int nRow, int nCol)
+    void Resize(Type nRow, Type nCol)
     {
         m_aData.resize(nRow * nCol);
         m_nDim = nCol;
     }
 
-    int RowCount() const;
-    int ColCount() const;
-    QSize GetDimension() const;
-    bool IsNull() const;
+    Type RowCount() const { return m_nDim == 0 ? 0 : m_aData.size() / m_nDim; }
+    Type ColCount() const { return m_nDim; }
+    QSize GetDimension() const { return QSize(ColCount(), RowCount()); }
+    bool IsNull() const { return m_nDim == 0; }
 
 private:
-    QVector<T> m_aData;
-    int m_nDim = 0;
+    std::vector<T> m_aData;
+    Type m_nDim = 0;
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-template<typename T>
-int CMatrix<T>::RowCount() const
-{
-    return m_nDim == 0 ? 0 : m_aData.size() / m_nDim;
-}
-
-template<typename T>
-int CMatrix<T>::ColCount() const
-{
-    return m_nDim;
-}
-
-template<typename T>
-QSize CMatrix<T>::GetDimension() const
-{
-    return QSize(ColCount(), RowCount());
-}
-
-template<typename T>
-bool CMatrix<T>::IsNull() const
-{
-    return m_nDim == 0;
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 } // namespace core
