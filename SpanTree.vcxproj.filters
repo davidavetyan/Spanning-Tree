@@ -104,11 +104,14 @@
     <ClInclude Include="src\include\gui_canvaswidget.h">
       <Filter>Include</Filter>
     </ClInclude>
+    <ClInclude Include="src\gui\griddrawer.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
     <ClInclude Include="src\include\gui_griddrawer.h">
       <Filter>Include</Filter>
     </ClInclude>
-    <ClInclude Include="src\gui\griddrawer.h">
-      <Filter>GUI</Filter>
+    <ClInclude Include="src\include\gui_spantree.h">
+      <Filter>Include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
