@@ -156,6 +156,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\gui\griddrawer.h" />
+    <ClInclude Include="src\include\gui_griddrawer.h" />
+    <ClInclude Include="src\include\gui_spantree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\gridgraph.h" />
@@ -165,7 +167,6 @@
     <ClInclude Include="src\include\core_gridgraph.h" />
     <ClInclude Include="src\include\core_stgenerator.h" />
     <ClInclude Include="src\include\gui_canvaswidget.h" />
-    <ClInclude Include="src\include\gui_griddrawer.h" />
     <QtMoc Include="src\core\stgenerator.h" />
   </ItemGroup>
   <ItemGroup>
