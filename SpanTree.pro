@@ -26,7 +26,7 @@ wasm: equals(WASM_DEBUG, "true") {
 
 # Set build generated file directories
 CONFIG(debug, debug|release) {
-    message(Generating $$TARGET Makefile for $(QMAKESPEC) (Debug mode).)
+    message(Generating $$TARGET Makefile for $(QMAKESPEC) (Debug mode))
     MOC_DIR = ../GeneratedFiles/Debug
     UI_DIR  = ../GeneratedFiles/Debug
     RCC_DIR = ../GeneratedFiles/Debug
