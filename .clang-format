@@ -31,7 +31,9 @@ BraceWrapping:
   AfterCaseLabel: true
   AfterNamespace: false
   BeforeLambdaBody: true
+  BeforeWhile: true
   SplitEmptyFunction: false
+  SplitEmptyRecord: false
 
 NamespaceIndentation: None
 IndentPPDirectives: AfterHash
