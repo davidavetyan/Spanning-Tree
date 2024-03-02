@@ -39,6 +39,9 @@
 .vs/
 .vscode/
 
+# Cache folders
+.cache/
+
 # Build results
 [Dd]ebug/
 [Rr]elease/
